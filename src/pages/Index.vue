@@ -30,6 +30,8 @@ export default {
     this.canva = document.getElementById('canva').getContext('2d')
     this.cartaoFrente = document.getElementById('cartao')
     this.cartaoVerso = document.getElementById('cartao-verso')
+    this.canva.shadowBlur = 15
+    this.canva.shadowColor = 'black'
     this.canva.drawImage(this.cartaoFrente, 10, 10)
   },
   methods: {
@@ -40,6 +42,7 @@ export default {
       this.canva.drawImage(this.cartaoFrente, 10, 10)
       this.canva.fillStyle = 'white'
       this.canva.font = '15px Arial'
+      this.canva.shadowBlur = 0
       this.canva.fillText(this.numero, 30, 150)
       this.canva.fillText('Data Validade', 190, 120)
       this.canva.fillText(this.validade, 215, 140)
@@ -47,10 +50,13 @@ export default {
     },
     escreverCvv () {
       this.canva.clearRect(0, 0, 400, 300)
+      this.canva.shadowBlur = 15
+      this.canva.shadowColor = 'black'
       this.canva.drawImage(this.cartaoVerso, 10, 10, this.cartaoFrente.width, this.cartaoFrente.height)
-      this.canva.fillStyle = 'white'
+      this.canva.shadowBlur = 0
+      this.canva.fillStyle = 'black'
       this.canva.font = '15px Arial'
-      this.canva.fillText(this.cvv, 20, 140)
+      this.canva.fillText(this.cvv, 250, 100)
     }
   }
 }
